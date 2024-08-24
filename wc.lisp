@@ -3,4 +3,9 @@
 ; (save-lisp-and-die "wc" :executable t :toplevel 'wc)
 (defun wc ()
     (progn
-      (print "yo yo yo")))
+      (print "lines:")
+      (print (length (loop
+         for line = (read-line *STANDARD-INPUT* nil 'eof)
+         until (eq line 'eof)
+         collect line)))
+      ))
